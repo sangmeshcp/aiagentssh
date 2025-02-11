@@ -1,0 +1,43 @@
+{
+    "high_cpu_usage": [
+        {
+            "description": "Check current CPU usage",
+            "command": "top -bn1 | head -n 5",
+            "expected_output": "CPU usage breakdown",
+            "remediation": {
+                "high_user": "Identify and kill resource-intensive user processes",
+                "high_system": "Check for system issues like kernel problems",
+                "high_wait": "Check for I/O bottlenecks"
+            }
+        },
+        {
+            "description": "Check process details",
+            "command": "ps aux --sort=-%cpu | head -n 10",
+            "expected_output": "List of top CPU-consuming processes",
+            "remediation": {
+                "single_process": "Investigate specific process",
+                "multiple_processes": "Check system resources"
+            }
+        }
+    ],
+    "memory_issues": [
+        {
+            "description": "Check memory usage",
+            "command": "free -h",
+            "expected_output": "Memory usage statistics",
+            "remediation": {
+                "high_usage": "Identify memory-intensive processes",
+                "low_free": "Consider increasing swap space"
+            }
+        },
+        {
+            "description": "Check swap usage",
+            "command": "swapon --show",
+            "expected_output": "Swap space information",
+            "remediation": {
+                "high_swap": "Increase physical memory",
+                "no_swap": "Configure swap space"
+            }
+        }
+    ]
+} 
